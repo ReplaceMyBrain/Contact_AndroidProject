@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.SignupFragment">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="50dp"
+            >
+
+        <EditText
+            android:id="@+id/singup_etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:textSize="15dp"
+            android:background="@drawable/edit_text"
+            android:padding="15dp"
+                />
+        <EditText
+            android:id="@+id/singup_etPw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:textSize="15dp"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:padding="15dp"
+                />
+
+        <EditText
+            android:id="@+id/singup_etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            android:textSize="15dp"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:padding="15dp"
+            android:inputType="number"
+                />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:text="SIGN UP"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+                />
+
+    </LinearLayout>
+</LinearLayout>

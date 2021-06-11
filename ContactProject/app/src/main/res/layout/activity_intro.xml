@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".Activity.IntroActivity"
+android:background="#ffffff">
+
+
+<com.airbnb.lottie.LottieAnimationView
+    android:id="@+id/cover"
+    android:layout_width="match_parent"
+    android:layout_height="0px"
+    android:layout_weight="6"
+    app:lottie_rawRes="@raw/contact1"
+    android:scaleType="centerCrop"
+    app:lottie_autoPlay="true"
+    app:lottie_loop="true"
+    />
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="0px"
+    android:layout_weight="0.3"
+    android:text="Maker KDW.  Version 1.0.0"
+    android:gravity="center"
+    android:textSize="13dp"
+    android:layout_marginTop="-10dp"
+    />
+
+</LinearLayout>
