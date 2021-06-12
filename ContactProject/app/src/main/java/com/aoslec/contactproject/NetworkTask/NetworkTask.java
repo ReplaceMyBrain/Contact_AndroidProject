@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.aoslec.contactproject.Bean.People;
+import com.aoslec.contactproject.Bean.User;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,6 +23,7 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
     String mAddr = null;
     ProgressDialog progressDialog = null;
     ArrayList<People> people;
+    ArrayList<User> user;
 
     // Network Task를 검색, 입력, 수정, 삭제 구분없이 하나로 사용키 위해 생성자 변수 추가.
     String where = null;
@@ -31,6 +33,7 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
         this.context = context;
         this.mAddr = mAddr;
         this.people = new ArrayList<People>();
+        this.user = new ArrayList<User>();
         this.where = where;
     }
 
@@ -41,7 +44,6 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
         progressDialog.setTitle("Dialog");
         progressDialog.setMessage("Get....");
         progressDialog.show();
-
     }
 
     @Override
@@ -86,12 +88,19 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
 
                 }  //----------------------------------------------------------------
 
-                if (where.equals("select")){
-                    parserSelect(stringBuffer.toString());
-                    Log.v("ggg","getSelect");
+                Log.v("ggg","while");
 
-                }else {
-                    result = parserAction(stringBuffer.toString());
+                if (where.equals("list")) {
+                    Log.v("ggg", "list");
+                    parserList(stringBuffer.toString());
+
+                }else if (where.equals("signUp")) {
+                    Log.v("ggg", "singUp");
+                    result = parserSignUp(stringBuffer.toString());
+
+                }else if (where.equals("login")) {
+                    Log.v("ggg", "login");
+                    parserLogin(stringBuffer.toString());
                 }
             }
 
@@ -106,19 +115,54 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
             }catch (Exception e){
                 e.printStackTrace();
             }
-            if (where.equals("select")){
+            if (where.equals("list")){
                 return people;
-            }else {
+            }
+            else if (where.equals("signUp")) {
                 return result;
+
+            }else if (where.equals("login")){
+                    return user;
+            }else{
+                return result;
+
             }
         }
     }
 
-    private String parserAction(String str){
+    private void parserLogin(String str) {
+        try {
+            JSONObject jsonObject = new JSONObject(str);
+            JSONArray jsonArray = new JSONArray(jsonObject.getString("user"));
+            user.clear();
+
+            Log.v("ggg","parserLogin" +jsonArray.length());
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    Log.v("ggg", "parserLogin for");
+                    JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                    String email = jsonObject1.getString("email");
+                    User u = new User(email);
+                    user.add(u);
+                }
+                if (jsonArray.length()==0) {
+                    Log.v("ggg", "parserLogin if");
+                    String email = "";
+                    User u = new User(email);
+                    user.add(u);
+                }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private String parserSignUp(String str){
         String returnValue = null;
         try {
             JSONObject jsonObject = new JSONObject(str);
             returnValue = jsonObject.getString("result");
+            Log.v("ggg", "parserSignUp");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -126,20 +170,24 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
         return  returnValue;
     }
 
-    private  void parserSelect(String str){
+    private  void parserList(String str){
         try {
-            Log.v("ggg","parserSelect");
+            Log.v("ggg","parserList");
             JSONObject jsonObject = new JSONObject(str);
             JSONArray jsonArray = new JSONArray(jsonObject.getString("people"));
             people.clear();
 
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
-                String name = jsonObject1.getString("name");
-                String img = jsonObject1.getString("img");
 
-                Log.v("ggg","name  " + name + "img  " + img);
-                People p = new People(name,img);
+                String name = jsonObject1.getString("name");
+                String tel = jsonObject1.getString("tel");
+                String img = jsonObject1.getString("img");
+                String group = jsonObject1.getString("group");
+                String favorite = jsonObject1.getString("favorite");
+
+                Log.v("ggg","name  " + name);
+                People p = new People(name, tel, img, group, favorite);
                 people.add(p);
             }
 

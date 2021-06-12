@@ -6,9 +6,11 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.aoslec.contactproject.Adapter.MainFragmentAdapter;
+import com.aoslec.contactproject.Fragment.ContactFragment;
 import com.aoslec.contactproject.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;

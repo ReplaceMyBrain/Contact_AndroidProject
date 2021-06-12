@@ -1,74 +1,70 @@
 package com.aoslec.contactproject.Bean;
 
 public class People {
-    private String name;
-    private String tel;
-    private String group;
-    private String favorite;
-    private String memo;
-    private String img;
 
-    public People(String name, String img) {
-        this.name = name;
-        this.img = img;
+    private String pName;
+    private String pTel;
+    private String pImg;
+    private String pGroup;
+    private String pFavorite;
+    private String uEmail;
+
+    public People(String pName, String pTel, String pImg, String pGroup, String pFavorite) {
+        this.pName = pName;
+        this.pTel = pTel;
+        this.pImg = pImg;
+        this.pGroup = pGroup;
+        this.pFavorite = pFavorite;
     }
 
-    public People(String name, String tel, String group, String favorite, String memo, String img) {
-        this.name = name;
-        this.tel = tel;
-        this.group = group;
-        this.favorite = favorite;
-        this.memo = memo;
-        this.img = img;
+    public String getpName() {
+        return pName;
     }
 
-    public String getName() {
-        return name;
+    public void setpName(String pName) {
+        this.pName = pName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getpTel() {
+        return pTel;
     }
 
-    public String getTel() {
-        return tel;
+    public void setpTel(String pTel) {
+        this.pTel = pTel;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public String getpImg() {
+        return pImg;
     }
 
-    public String getGroup() {
-        return group;
+    public void setpImg(String pImg) {
+        this.pImg = pImg;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public String getpGroup() {
+        return pGroup;
     }
 
-    public String getFavorite() {
-        return favorite;
+    public void setpGroup(String pGroup) {
+        this.pGroup = pGroup;
     }
 
-    public void setFavorite(String favorite) {
-        this.favorite = favorite;
+    public String getpFavorite() {
+        return pFavorite;
     }
 
-    public String getMemo() {
-        return memo;
+    public void setpFavorite(String pFavorite) {
+        this.pFavorite = pFavorite;
     }
 
-    public void setMemo(String memo) {
-        this.memo = memo;
+    public String getuEmail() {
+        return uEmail;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
+    public void setuEmail(String uEmail) {
+        this.uEmail = uEmail;
     }
 }
+
 
 

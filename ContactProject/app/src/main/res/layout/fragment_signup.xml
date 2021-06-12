@@ -25,23 +25,26 @@
             android:textSize="15dp"
             android:background="@drawable/edit_text"
             android:padding="15dp"
+            android:inputType="textEmailAddress"
                 />
+
         <EditText
             android:id="@+id/singup_etPw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
             android:textSize="15dp"
+            android:inputType="textPassword"
             android:background="@drawable/edit_text"
             android:layout_marginTop="20dp"
             android:padding="15dp"
                 />
 
         <EditText
-            android:id="@+id/singup_etPhone"
+            android:id="@+id/singup_etTel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone"
+            android:hint="Tel"
             android:textSize="15dp"
             android:background="@drawable/edit_text"
             android:layout_marginTop="20dp"
@@ -50,6 +53,7 @@
                 />
 
         <Button
+            android:id="@+id/singup_btnSingup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button"
