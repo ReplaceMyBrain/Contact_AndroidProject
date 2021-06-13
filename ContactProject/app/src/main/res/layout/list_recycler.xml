@@ -6,8 +6,7 @@
     android:layout_height="wrap_content"
     android:padding="5dp"
     android:gravity="center|left"
-    android:clickable="true"
-    tools:ignore="WebViewLayout">
+    android:clickable="true">
 
     <ImageView
         android:id="@+id/recycler_image"

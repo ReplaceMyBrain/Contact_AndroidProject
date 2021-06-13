@@ -101,6 +101,11 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
                 }else if (where.equals("login")) {
                     Log.v("ggg", "login");
                     parserLogin(stringBuffer.toString());
+
+                }else if (where.equals("group")) {
+                    Log.v("ggg", "group");
+                    parserGroup(stringBuffer.toString());
+
                 }
             }
 
@@ -118,17 +123,23 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
             if (where.equals("list")){
                 return people;
             }
-            else if (where.equals("signUp")) {
+            else if (where.equals("signUp")){
                 return result;
 
             }else if (where.equals("login")){
                     return user;
+
+            }else if (where.equals("group")){
+                return user;
+
             }else{
                 return result;
 
             }
         }
     }
+
+
 
     private void parserLogin(String str) {
         try {
@@ -178,6 +189,7 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
             people.clear();
 
             for(int i=0; i<jsonArray.length(); i++){
+                Log.v("ggg", "parserList for");
                 JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
 
                 String name = jsonObject1.getString("name");
@@ -190,11 +202,46 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
                 People p = new People(name, tel, img, group, favorite);
                 people.add(p);
             }
+            if (jsonArray.length()==0) {
+                String name = "false";
+                People p = new People(name);
+                people.add(p);
+            }
 
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
+    private void parserGroup(String str) {
+        try {
+            Log.v("ggg","parserGroup");
+            JSONObject jsonObject = new JSONObject(str);
+            JSONArray jsonArray = new JSONArray(jsonObject.getString("people"));
+            people.clear();
+
+            for(int i=0; i<jsonArray.length(); i++){
+                Log.v("ggg", "parserGroup for");
+                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+
+                String group = jsonObject1.getString("group");
+                int count = jsonObject1.getInt("count");
+
+                Log.v("ggg","group  " + group + count);
+                People p = new People(group,count);
+                people.add(p);
+
+            }
+            if (jsonArray.length()==0) {
+                Log.v("ggg", "parserGroup if");
+                String group = "false";
+                People p = new People(group);
+                people.add(p);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 } // NetworkTask

@@ -31,8 +31,7 @@ import java.util.ArrayList;
 public class LoginFragment extends Fragment {
 
     Share share = new Share();
-    String url;
-    String urlAddr;
+    String url,urlAddr;
 
     String uEmail, uPw;
     EditText etEmail,etPw;
@@ -87,7 +86,6 @@ public class LoginFragment extends Fragment {
                 share.sEmail = uEmail;
 
                 Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.putExtra("uEmail", uEmail);
                 startActivity(intent);
                 getActivity().finish();
 
@@ -95,7 +93,7 @@ public class LoginFragment extends Fragment {
                 tvFail.setText("로그인실패");
                 etEmail.setText("");
                 etPw.setText("");
-                urlAddr="http://172.30.1.11:8080/contact/login.jsp?";
+                urlAddr="";
             }
         }
     };
@@ -107,7 +105,6 @@ public class LoginFragment extends Fragment {
             Object obj = networkTask.execute().get();
             user = (ArrayList<User>) obj;
 
-            Log.v("ggg","userEmail" +user.get(0).getuEmail());
 
         }catch (Exception e){
             e.printStackTrace();

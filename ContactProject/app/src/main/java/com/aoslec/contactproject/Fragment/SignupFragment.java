@@ -16,10 +16,13 @@ import android.widget.Toast;
 
 import com.aoslec.contactproject.NetworkTask.NetworkTask;
 import com.aoslec.contactproject.R;
+import com.aoslec.contactproject.Utill.Share;
 
 public class SignupFragment extends Fragment {
 
-    String urlAddr = "http://172.30.1.11:8080/contact/singUp.jsp?";
+    Share share = new Share();
+    String url,urlAddr;
+
     String uEmail, uPw, uTel;
 
     EditText etEmail, etPw, etTel;
@@ -46,12 +49,16 @@ public class SignupFragment extends Fragment {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
+            url=share.sUrl;
+
             uEmail = etEmail.getText().toString();
             uPw = etPw.getText().toString();
             uTel = etTel.getText().toString();
+
             Log.v("ggg","onClick");
 
-            urlAddr = urlAddr + "email=" + uEmail + "&pw=" + uPw + "&tel=" + uTel;
+            urlAddr = url + "singUp.jsp?email=" + uEmail + "&pw=" + uPw + "&tel=" + uTel;
 
             Log.v("ggg","url" + urlAddr);
 
@@ -68,7 +75,7 @@ public class SignupFragment extends Fragment {
                 etEmail.setText("");
                 etPw.setText("");
                 etTel.setText("");
-                urlAddr="http://172.30.1.11:8080/contact/singUp.jsp?";
+                urlAddr="";
 
             }else {
                 new AlertDialog.Builder(getActivity()) // ;지워야함!
@@ -81,7 +88,7 @@ public class SignupFragment extends Fragment {
                 etEmail.setText("");
                 etPw.setText("");
                 etTel.setText("");
-                urlAddr="http://172.30.1.11:8080/contact/singUp.jsp?";
+                urlAddr="";
             }
         }
     };

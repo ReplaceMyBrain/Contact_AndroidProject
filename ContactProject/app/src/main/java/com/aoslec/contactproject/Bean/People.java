@@ -8,6 +8,8 @@ public class People {
     private String pGroup;
     private String pFavorite;
     private String uEmail;
+    private int count;
+
 
     public People(String pName, String pTel, String pImg, String pGroup, String pFavorite) {
         this.pName = pName;
@@ -15,6 +17,23 @@ public class People {
         this.pImg = pImg;
         this.pGroup = pGroup;
         this.pFavorite = pFavorite;
+    }
+
+    public People(String pName) {
+        this.pName = pName;
+    }
+
+    public People(String pGroup, int count) {
+        this.pGroup = pGroup;
+        this.count = count;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public String getpName() {

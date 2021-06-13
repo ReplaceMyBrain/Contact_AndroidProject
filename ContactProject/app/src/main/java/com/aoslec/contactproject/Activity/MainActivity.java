@@ -1,5 +1,6 @@
 package com.aoslec.contactproject.Activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toolbar;
 
 import com.aoslec.contactproject.Adapter.MainFragmentAdapter;
 import com.aoslec.contactproject.Fragment.ContactFragment;
@@ -87,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
             }
-
 
         }
     }; //onClickListener
