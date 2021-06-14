@@ -94,9 +94,9 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
                     Log.v("ggg", "list");
                     parserList(stringBuffer.toString());
 
-                }else if (where.equals("signUp")) {
-                    Log.v("ggg", "singUp");
-                    result = parserSignUp(stringBuffer.toString());
+                }else if (where.equals("insert")) {
+                    Log.v("ggg", "insert");
+                    result = parserInsert(stringBuffer.toString());
 
                 }else if (where.equals("login")) {
                     Log.v("ggg", "login");
@@ -123,14 +123,14 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
             if (where.equals("list")){
                 return people;
             }
-            else if (where.equals("signUp")){
+            else if (where.equals("insert")){
                 return result;
 
             }else if (where.equals("login")){
-                    return user;
+                return user;
 
             }else if (where.equals("group")){
-                return user;
+                return people;
 
             }else{
                 return result;
@@ -138,8 +138,6 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
             }
         }
     }
-
-
 
     private void parserLogin(String str) {
         try {
@@ -168,12 +166,12 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
         }
     }
 
-    private String parserSignUp(String str){
+    private String parserInsert(String str){
         String returnValue = null;
         try {
             JSONObject jsonObject = new JSONObject(str);
             returnValue = jsonObject.getString("result");
-            Log.v("ggg", "parserSignUp");
+            Log.v("ggg", "parserInsert");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -192,6 +190,7 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
                 Log.v("ggg", "parserList for");
                 JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
 
+                String no  = jsonObject1.getString("no");
                 String name = jsonObject1.getString("name");
                 String tel = jsonObject1.getString("tel");
                 String img = jsonObject1.getString("img");
@@ -199,7 +198,7 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
                 String favorite = jsonObject1.getString("favorite");
 
                 Log.v("ggg","name  " + name);
-                People p = new People(name, tel, img, group, favorite);
+                People p = new People(no, name, tel, img, group, favorite);
                 people.add(p);
             }
             if (jsonArray.length()==0) {
@@ -225,17 +224,10 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
                 JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
 
                 String group = jsonObject1.getString("group");
-                int count = jsonObject1.getInt("count");
+                String count = jsonObject1.getString("count");
 
                 Log.v("ggg","group  " + group + count);
-                People p = new People(group,count);
-                people.add(p);
-
-            }
-            if (jsonArray.length()==0) {
-                Log.v("ggg", "parserGroup if");
-                String group = "false";
-                People p = new People(group);
+                People p = new People(group, count);
                 people.add(p);
             }
 

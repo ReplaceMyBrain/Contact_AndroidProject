@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             switch (v.getId()){
                 case R.id.call:
                     //startActivity(new Intent(Intent.ACTION_DIAL));
-                    startActivity(new Intent(MainActivity.this, ProfileEditActivity.class));
+                    startActivity(new Intent(Intent.ACTION_DIAL));
                     break;
                 case R.id.newProfile:
                     startActivity(new Intent(MainActivity.this, ProfileRegisterActivity.class));

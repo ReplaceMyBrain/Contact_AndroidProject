@@ -2,16 +2,17 @@ package com.aoslec.contactproject.Bean;
 
 public class People {
 
+    private String pNo;
     private String pName;
     private String pTel;
     private String pImg;
     private String pGroup;
     private String pFavorite;
     private String uEmail;
-    private int count;
+    private String count;
 
-
-    public People(String pName, String pTel, String pImg, String pGroup, String pFavorite) {
+    public People(String pNo, String pName, String pTel, String pImg, String pGroup, String pFavorite) {
+        this.pNo = pNo;
         this.pName = pName;
         this.pTel = pTel;
         this.pImg = pImg;
@@ -23,16 +24,24 @@ public class People {
         this.pName = pName;
     }
 
-    public People(String pGroup, int count) {
+    public People(String pGroup, String count) {
         this.pGroup = pGroup;
         this.count = count;
     }
 
-    public int getCount() {
+    public String getpNo() {
+        return pNo;
+    }
+
+    public void setpNo(String pNo) {
+        this.pNo = pNo;
+    }
+
+    public String getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(String count) {
         this.count = count;
     }
 

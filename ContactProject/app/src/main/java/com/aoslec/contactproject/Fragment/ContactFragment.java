@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aoslec.contactproject.Activity.MainActivity;
 import com.aoslec.contactproject.Activity.ProfileEditActivity;
@@ -48,11 +49,6 @@ public class ContactFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         tvEmpty = view.findViewById(R.id.contact_tvEmpty);
 
-        ContactAdapter contactAdapter = new ContactAdapter();
-
-        contactAdapter.setOnItemClickListener(onItemClickListener);
-        contactAdapter.setOnItemLongClickListener(onItemLongClickListener);
-
         return view;
     }
 
@@ -83,35 +79,41 @@ public class ContactFragment extends Fragment {
             adapter = new ContactAdapter(getActivity(), R.layout.list_recycler, people);
             recyclerView.setAdapter(adapter);
 
-
+//            ContactAdapter contactAdapter = new ContactAdapter();
+//            contactAdapter.setOnItemClickListener(onItemClickListener);
+//            contactAdapter.setOnItemLongClickListener(onItemLongClickListener);
 
 
         }catch (Exception e){
             e.printStackTrace();
         }
     }
-
-    ContactAdapter.OnItemClickListener onItemClickListener = new ContactAdapter.OnItemClickListener() {
-        @Override
-        public void onItemClick(View v, int position) {
-            Intent intent = null;
-            intent = new Intent(getActivity(), ProfileEditActivity.class);
-            intent.putExtra("name",people.get(position).getpName());
-            intent.putExtra("tel",people.get(position).getpTel());
-            intent.putExtra("img",people.get(position).getpImg());
-            intent.putExtra("group",people.get(position).getpGroup());
-            intent.putExtra("favorite",people.get(position).getpFavorite());
-            startActivity(intent);
-
-        }
-    };
-
-    ContactAdapter.OnItemLongClickListener onItemLongClickListener = new ContactAdapter.OnItemLongClickListener() {
-        @Override
-        public void onItemLongClick(View v, int pos) {
-
-        }
-    };
+//
+//    ContactAdapter.OnItemClickListener onItemClickListener = new ContactAdapter.OnItemClickListener() {
+//        @Override
+//        public void onItemClick(View v, int position) {
+//
+//            Log.v("ggg","onItemClick");
+//
+//            Toast.makeText(getActivity(),"클릭됨",Toast.LENGTH_SHORT).show();
+////            Intent intent = null;
+////            intent = new Intent(getActivity(), ProfileEditActivity.class);
+////            intent.putExtra("name",people.get(position).getpName());
+////            intent.putExtra("tel",people.get(position).getpTel());
+////            intent.putExtra("img",people.get(position).getpImg());
+////            intent.putExtra("group",people.get(position).getpGroup());
+////            intent.putExtra("favorite",people.get(position).getpFavorite());
+////            startActivity(intent);
+//
+//        }
+//    };
+//
+//    ContactAdapter.OnItemLongClickListener onItemLongClickListener = new ContactAdapter.OnItemLongClickListener() {
+//        @Override
+//        public void onItemLongClick(View v, int pos) {
+//
+//        }
+//    };
 
 }//==
 

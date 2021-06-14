@@ -13,15 +13,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.aoslec.contactproject.Bean.Group;
 import com.aoslec.contactproject.NetworkTask.NetworkTask;
 import com.aoslec.contactproject.R;
 import com.aoslec.contactproject.Utill.Share;
-
-import java.util.ArrayList;
 
 public class ProfileRegisterActivity extends AppCompatActivity {
 
@@ -35,7 +31,7 @@ public class ProfileRegisterActivity extends AppCompatActivity {
     CheckBox cbFavorite;
     ImageView img;
     Button btnRegister;
-    TextView tv_group;
+    TextView tvGroup;
 
     //Dialog
     int mSelect=0;
@@ -50,10 +46,10 @@ public class ProfileRegisterActivity extends AppCompatActivity {
         cbFavorite = findViewById(R.id.register_favorite);
         img = findViewById(R.id.register_image);
         btnRegister = findViewById(R.id.register_btnRegister);
-        tv_group = findViewById(R.id.register_group);
+        tvGroup = findViewById(R.id.register_group);
 
         btnRegister.setOnClickListener(onClickListener);
-        tv_group.setOnClickListener(groupClick);
+        tvGroup.setOnClickListener(groupClick);
 
     }//c
 
@@ -66,7 +62,7 @@ public class ProfileRegisterActivity extends AppCompatActivity {
 
             pName = etName.getText().toString();
             pTel = etTel.getText().toString();
-            pGroup = tv_group.getText().toString();
+            pGroup = tvGroup.getText().toString();
 //            pImg = ;
 
             if(cbFavorite.isChecked()){
@@ -109,7 +105,7 @@ public class ProfileRegisterActivity extends AppCompatActivity {
     private String connectRegisterDate() {
         String result = null;
         try {
-            NetworkTask networkTask = new NetworkTask(ProfileRegisterActivity.this, urlAddr,"signUp");
+            NetworkTask networkTask = new NetworkTask(ProfileRegisterActivity.this, urlAddr,"insert");
             Object obj = networkTask.execute().get();
             result = (String) obj;
             Log.v("ggg","register" + result);
@@ -127,7 +123,7 @@ public class ProfileRegisterActivity extends AppCompatActivity {
             if(which==DialogInterface.BUTTON_POSITIVE){
                etName.setText("");
                etTel.setText("");
-               tv_group.setText("없음");
+                tvGroup.setText("없음");
                urlAddr="";
                cbFavorite.setChecked(false);
 
@@ -170,7 +166,7 @@ public class ProfileRegisterActivity extends AppCompatActivity {
         public void onClick(DialogInterface dialog, int which) {
 
             String[] group = getResources().getStringArray(R.array.group); //리스트 불러오고
-            tv_group.setText(group[mSelect]);
+            tvGroup.setText(group[mSelect]);
 
         }
     };

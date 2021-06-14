@@ -5,62 +5,62 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.aoslec.contactproject.Bean.People;
 import com.aoslec.contactproject.R;
 
 import java.util.ArrayList;
 
-public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolderG> {
+public class GroupAdapter extends BaseAdapter{
+
     private Context mContext = null;
     private int Layout = 0;
     private LayoutInflater inflater = null;
     private ArrayList<People> data = null;
 
     public GroupAdapter(Context mContext, int layout, ArrayList<People> data) {
+        Log.v("ggg","group ");
+
         this.mContext = mContext;
-        Layout = layout;
+        this.Layout = layout;
         this.data = data;
         this.inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        Log.v("ggg", "GAdapter");
     }
 
     @Override
-    public GroupAdapter.ViewHolderG onCreateViewHolder( ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.group_recycler,parent,false);
-        ViewHolderG viewHolderG = new ViewHolderG(v);
-        Log.v("ggg", "gCreat");
-        return viewHolderG;
-    }
-
-    @Override
-    public void onBindViewHolder(GroupAdapter.ViewHolderG holder, int position) {
-        holder.tv_group.setText(data.get(position).getpGroup());
-        holder.tv_count.setText(data.get(position).getCount());
-        Log.v("ggg", "onB");
-
-    }
-
-    @Override
-    public int getItemCount() {
+    public int getCount() {
         return data.size();
     }
 
-    public class ViewHolderG extends RecyclerView.ViewHolder {
+    @Override
+    public Object getItem(int position) {
+        return data.get(position).getpGroup();
+    }
 
-        public TextView tv_group;
-        public TextView tv_count;
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+       convertView = inflater.inflate(this.Layout,parent,false);
 
-        public ViewHolderG(View itemView) {
-            super(itemView);
-            Log.v("ggg", "gView");
-            tv_group = itemView.findViewById(R.id.recycler_group);
-            tv_count = itemView.findViewById(R.id.recycler_count);
-        }
+       Log.v("ggg","group getView");
+
+        ImageView imageView = convertView.findViewById(R.id.list_img);
+        TextView group = convertView.findViewById(R.id.list_group);
+        TextView count = convertView.findViewById(R.id.list_count);
+
+        group.setText(data.get(position).getpGroup());
+        count.setText("   (" + data.get(position).getCount() + ")");
+
+        Log.v("ggg","group" + group + "count" + count);
+
+        return convertView;
     }
 }
-

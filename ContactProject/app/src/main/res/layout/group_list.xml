@@ -4,20 +4,30 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp">
+    android:padding="15dp">
+
+    <ImageView
+        android:id="@+id/list_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/group"
+        android:layout_marginLeft="20dp"
+        />
 
     <TextView
-        android:id="@+id/recycler_group"
+        android:id="@+id/list_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
+        android:layout_marginLeft="10dp"
         android:textColor="@color/black"
         />
     <TextView
-        android:id="@+id/recycler_count"
+        android:id="@+id/list_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
+        android:layout_marginLeft="10dp"
         android:textColor="@color/black"
         />
 

@@ -96,7 +96,7 @@ public class SignupFragment extends Fragment {
     private  String connectInsertData(){
         String result = null;
         try {
-            NetworkTask networkTask = new NetworkTask(getActivity(), urlAddr,"signUp");
+            NetworkTask networkTask = new NetworkTask(getActivity(), urlAddr,"insert");
             Object obj = networkTask.execute().get();
             result = (String) obj;
             Log.v("ggg","signUp" + result);
