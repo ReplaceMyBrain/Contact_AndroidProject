@@ -231,6 +231,14 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
                 people.add(p);
             }
 
+            if (jsonArray.length()==0) {
+                Log.v("ggg", "parserGroup if");
+                String group = "false";
+                String count = "false";
+                People p = new People(group,count);
+                people.add(p);
+            }
+
         }catch (Exception e){
             e.printStackTrace();
         }

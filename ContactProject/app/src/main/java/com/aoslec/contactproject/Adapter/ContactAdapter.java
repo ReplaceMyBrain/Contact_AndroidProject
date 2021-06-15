@@ -1,6 +1,8 @@
 package com.aoslec.contactproject.Adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aoslec.contactproject.Activity.MainActivity;
 import com.aoslec.contactproject.Activity.ProfileEditActivity;
 import com.aoslec.contactproject.Bean.People;
+import com.aoslec.contactproject.NetworkTask.NetworkTask;
 import com.aoslec.contactproject.R;
 import com.aoslec.contactproject.Utill.Share;
 import com.bumptech.glide.Glide;
@@ -26,7 +30,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
     private int Layout = 0;
     private LayoutInflater inflater = null;
     private ArrayList<People> data = null;
-    private String url;
+    Share share = new Share();
+    private String url, urlAddr;
 
 
     //-------------------클릭리스너(커스텀)
@@ -78,7 +83,6 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ContactAdapter.ViewHolder holder, int position) {
-        Share share = new Share();
         url = share.sUrl;
 
         holder.tv_name.setText(data.get(position).getpName());
@@ -101,6 +105,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
         public TextView tv_name;
         public ImageView img;
+        int pos = 0;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -111,7 +116,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int pos = getAdapterPosition();
+                    pos = getAdapterPosition();
                     Log.v("ggg", "List viewHolder2" + pos);
                     if (pos != RecyclerView.NO_POSITION) {
                         Log.v("ggg", "List viewHolder3" + pos);
@@ -133,17 +138,58 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    int pos = getAdapterPosition();
+                    pos = getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
 
-
+                        new AlertDialog.Builder(mContext)
+                                .setTitle("삭제")
+                                .setMessage(data.get(pos).getpName() + "님을 삭제하시겠습니까?")
+                                .setIcon(R.drawable.delete)
+                                .setCancelable(false)
+                                .setPositiveButton("삭제",delete)
+                                .setNegativeButton("취소",null)
+                                .show();
                     }
                     return true;
                 }
             });
         }
 
+        DialogInterface.OnClickListener delete = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                url = share.sUrl;
+
+                urlAddr = url + "profileDelete.jsp?no=" + data.get(pos).getpNo();
+                Log.v("ggg", "longClick" + urlAddr);
+                String result = connectDeleteDate();
+                Log.v("ggg","Delete");
+
+                Intent intent = new Intent(mContext, MainActivity.class);
+                mContext.startActivity(intent);
+
+                Toast.makeText(mContext,"삭제되었습니다",Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        private String connectDeleteDate() {
+            String result = null;
+            try {
+                NetworkTask networkTask = new NetworkTask(mContext, urlAddr,"insert");
+                Object obj = networkTask.execute().get();
+                result = (String) obj;
+                Log.v("ggg","" + result);
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return result;
+        }
+
     }//Class
+
+
 
 }//-----
 

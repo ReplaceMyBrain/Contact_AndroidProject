@@ -26,6 +26,7 @@
             android:background="@drawable/edit_text"
             android:padding="15dp"
             android:inputType="textEmailAddress"
+            android:imeOptions="actionDone"
                 />
 
         <EditText
@@ -38,6 +39,7 @@
             android:background="@drawable/edit_text"
             android:layout_marginTop="20dp"
             android:padding="15dp"
+            android:imeOptions="actionDone"
                 />
 
         <EditText
@@ -50,6 +52,7 @@
             android:layout_marginTop="20dp"
             android:padding="15dp"
             android:inputType="number"
+            android:imeOptions="actionDone"
                 />
 
         <Button

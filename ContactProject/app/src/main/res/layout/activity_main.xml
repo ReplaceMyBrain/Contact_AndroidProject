@@ -8,23 +8,6 @@
     tools:context=".Activity.MainActivity"
     android:background="@color/white">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="연락처"
-            app:menu="@menu/main_app_bar"
-            android:background="@color/white"
-            />
-<!--            style="@style/Widget.MaterialComponents.Toolbar.Primary"-->
-
-
-    </com.google.android.material.appbar.AppBarLayout>
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"

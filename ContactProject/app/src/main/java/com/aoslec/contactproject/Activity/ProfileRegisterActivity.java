@@ -41,6 +41,8 @@ public class ProfileRegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_register);
 
+        setTitle("주소록 등록");
+
         etName = findViewById(R.id.register_name);
         etTel = findViewById(R.id.register_tel);
         cbFavorite = findViewById(R.id.register_favorite);
@@ -172,25 +174,25 @@ public class ProfileRegisterActivity extends AppCompatActivity {
     };
 
 
-    DialogInterface.OnClickListener groupAdd = new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            final LinearLayout linear = (LinearLayout) View.inflate(ProfileRegisterActivity.this, R.layout.dialog_group_add, null);
-            new AlertDialog.Builder(ProfileRegisterActivity.this)
-                    .setTitle("그룹의 이름을 적어주세요.")
-                    .setIcon(R.drawable.group)
-                    .setView(linear)
-                    .setPositiveButton("추가", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            String[] group = getResources().getStringArray(R.array.group);
-                            EditText name = linear.findViewById(R.id.dialog_group_etName);
-
-                        }
-                    })
-                    .setNegativeButton("닫기",null);
-
-            }
-        };
+//    DialogInterface.OnClickListener groupAdd = new DialogInterface.OnClickListener() {
+//        @Override
+//        public void onClick(DialogInterface dialog, int which) {
+//            final LinearLayout linear = (LinearLayout) View.inflate(ProfileRegisterActivity.this, R.layout.dialog_group_add, null);
+//            new AlertDialog.Builder(ProfileRegisterActivity.this)
+//                    .setTitle("그룹의 이름을 적어주세요.")
+//                    .setIcon(R.drawable.group)
+//                    .setView(linear)
+//                    .setPositiveButton("추가", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            String[] group = getResources().getStringArray(R.array.group);
+//                            EditText name = linear.findViewById(R.id.dialog_group_etName);
+//
+//                        }
+//                    })
+//                    .setNegativeButton("닫기",null);
+//
+//            }
+//        };
 
 }//--

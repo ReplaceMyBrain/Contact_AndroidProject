@@ -3,7 +3,9 @@ package com.aoslec.contactproject.Activity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +22,7 @@ import com.aoslec.contactproject.R;
 import com.aoslec.contactproject.Utill.Share;
 import com.bumptech.glide.Glide;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
 
 public class ProfileEditActivity extends AppCompatActivity {
@@ -49,6 +52,8 @@ public class ProfileEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_edit);
 
+        setTitle("상세페이지");
+
         etName = findViewById(R.id.edit_name);
         etTel = findViewById(R.id.edit_tel);
         cbFavorite = findViewById(R.id.edit_favorite);
@@ -58,6 +63,8 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         call = findViewById(R.id.edit_Call);
         message = findViewById(R.id.edit_Message);
+
+        tvGroup.setOnClickListener(groupClick);
 
     }//c
 
@@ -102,9 +109,11 @@ public class ProfileEditActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.edit_Call:
-                    startActivity(new Intent(Intent.ACTION_DIAL));
+                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+etTel.getText())));
+                    break;
                 case R.id.edit_Message:
-                    startActivity(new Intent(Intent.ACTION_SEND));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("smsto:"+etTel.getText())));
+                    break;
             }
 
         }
@@ -202,6 +211,42 @@ public class ProfileEditActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+
+//그룹 다이얼로그
+    View.OnClickListener groupClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.v("ggg","groupClick");
+
+            new AlertDialog.Builder(ProfileEditActivity.this)
+                    .setTitle("설정할 그룹을 지정해주세요.")
+                    .setIcon(R.drawable.group)
+                    .setSingleChoiceItems(R.array.group, mSelect, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            mSelect = which;
+                        }
+                    })
+                    .setCancelable(false)
+                    .setPositiveButton("확인", groupDialogClick)
+                    .setNegativeButton("닫기", null)
+                    .setNeutralButton("추가", null)
+                    .show();
+
+        }
+    };
+
+    //확인 눌렀을 경우
+    DialogInterface.OnClickListener groupDialogClick = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+
+            String[] group = getResources().getStringArray(R.array.group); //리스트 불러오고
+            tvGroup.setText(group[mSelect]);
+
+        }
+    };
 
 
 
