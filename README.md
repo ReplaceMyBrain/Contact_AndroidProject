@@ -28,3 +28,10 @@
 ##### Package
 
 ![065](https://user-images.githubusercontent.com/80452660/122008113-9d048c00-cdf3-11eb-9e32-d7c2a922819a.png)
+
+----------
+
+####수정 2021.06.19
+
+이미지업로드(원모양), 이미지수정, 이미지저장, DB, jsp파일 등. 
+
