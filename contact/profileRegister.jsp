@@ -4,7 +4,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	String email = request.getParameter("email");	
-	String name = request.getParameter(name");
+	String name = request.getParameter("name");
 	String tel = request.getParameter("tel");
 	String img = request.getParameter("img");
 	String group = request.getParameter("group");
@@ -25,7 +25,7 @@
 	    Connection conn_mysql = DriverManager.getConnection(url_mysql,id_mysql,pw_mysql);
 		Statement stmt_mysql = conn_mysql.createStatement();
 	
-	    String A = "insert into user (uEmail, pName, pTel, pImg, pGroup, pFavorite) values (?,?,?,?,?,?)";
+	    String A = "insert into people (uEmail, pName, pTel, pImg, pGroup, pFavorite) values (?,?,?,?,?,?)";
 	
 		    ps = conn_mysql.prepareStatement(A);
  		    ps.setString(1, email);
@@ -35,7 +35,6 @@
 		    ps.setString(5, group);
 		    ps.setString(6, favorite);
  	  	   
-	
 		    result = ps.executeUpdate();
 %>
 		{
