@@ -1,3 +1,9 @@
+####수정 2021.06.19
+
+이미지업로드(원모양), 이미지수정, 이미지저장, DB, jsp파일 등. 
+
+
+
 # Contact_AndroidProject
 
 
@@ -17,21 +23,12 @@
 
 --------
 
+------------------------------------------
+##### 산출물
+![022](https://user-images.githubusercontent.com/80452660/129970852-99447cf0-1c79-45e1-8404-1a3aac037ebd.jpg)
+------------------------------------------
 ##### 개발환경
-
-![066](https://user-images.githubusercontent.com/80452660/122008115-9d048c00-cdf3-11eb-98b6-b05ca2ebfc2c.png)
-
+![016](https://user-images.githubusercontent.com/80452660/129970861-abb531dd-dc7d-44c6-a944-ce62682c3b3d.jpg)
+------------------------------------------
 ##### View
-
-![064](https://user-images.githubusercontent.com/80452660/122008107-9bd35f00-cdf3-11eb-82af-a8416fbb8408.png)
-
-##### Package
-
-![065](https://user-images.githubusercontent.com/80452660/122008113-9d048c00-cdf3-11eb-9e32-d7c2a922819a.png)
-
-----------
-
-####수정 2021.06.19
-
-이미지업로드(원모양), 이미지수정, 이미지저장, DB, jsp파일 등. 
-
+![020](https://user-images.githubusercontent.com/80452660/129970876-1863fcc5-00eb-4f94-84a9-538ab7d6c095.jpg) ![021](https://user-images.githubusercontent.com/80452660/129970878-0b32c01a-820b-4973-acc2-15e24697fb5c.jpg) ![017](https://user-images.githubusercontent.com/80452660/129970879-2ce75db5-5663-4e6a-8e7e-9da79ed4812a.jpg)
