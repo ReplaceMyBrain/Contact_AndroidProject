@@ -26,7 +26,7 @@
 ![022](https://user-images.githubusercontent.com/80452660/129970852-99447cf0-1c79-45e1-8404-1a3aac037ebd.jpg)
 ------------------------------------------
 ##### 개발환경
-![016](https://user-images.githubusercontent.com/80452660/129970861-abb531dd-dc7d-44c6-a944-ce62682c3b3d.jpg)
+![019](https://user-images.githubusercontent.com/80452660/129971351-f2197a90-73db-4eee-a628-6c43a35f6d54.jpg)
 ------------------------------------------
 ##### View
 ![020](https://user-images.githubusercontent.com/80452660/129970876-1863fcc5-00eb-4f94-84a9-538ab7d6c095.jpg) ![021](https://user-images.githubusercontent.com/80452660/129970878-0b32c01a-820b-4973-acc2-15e24697fb5c.jpg) ![017](https://user-images.githubusercontent.com/80452660/129970879-2ce75db5-5663-4e6a-8e7e-9da79ed4812a.jpg)
